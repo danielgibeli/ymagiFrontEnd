@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Doações</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cards-bg">
+    <ion-card>
+      <img [src] ="item?.imageUrlDoa || 'assets/imgs/prod.jpg'">
+  
+      <ion-card-content>
+        <ion-card-title>
+            {{item?.nome}}
+        </ion-card-title>
+        <p>
+            {{item?.descricao}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+        <ion-row padding>
+            <ion-col>
+              <button ion-button small color="light" icon-start>
+                <ion-icon name='call'></ion-icon>
+                Telefone
+              </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button small color="light" icon-end>
+              Chat
+              <ion-icon name='md-chatbubbles'></ion-icon>
+            </button>
+          </ion-col>
+      </ion-row>  
+</ion-content>

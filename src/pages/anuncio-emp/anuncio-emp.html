@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nosso Parceiro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="cards-bg"> 
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-card class="adv-map">
+      <div style="position: relative">
+        <img [src] ="item?.imageUrlAnuncioEmp || 'assets/imgs/avatar-blank.png'">
+        <ion-fab right top>
+          <button ion-fab class="fab-map">
+            <ion-icon name='pin'></ion-icon>
+          </button>
+        </ion-fab>
+      </div>
+      <ion-item>
+        <ion-icon color="subtle" large item-start name='people'></ion-icon>
+        <h2>{{item?.nome}}</h2>
+        <p>{{item?.segmento}}</p>
+        <p>{{item?.localEmp}}</p>
+      </ion-item>
+      <ion-item actions>
+        <span ion-text item-start color="secondary" class="item-bold">18 min</span>
+        <span ion-text item-start color="subtle">(2.6 mi)</span>
+        <button ion-button color="primary" clear item-end icon-start>
+          <ion-icon name='navigate'></ion-icon>
+          Iniciar
+        </button>
+      </ion-item>
+    
+    </ion-card>
+
+</ion-content>

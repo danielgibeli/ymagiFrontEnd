@@ -1,0 +1,73 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Configurações</ion-title>
+    </ion-navbar>
+</ion-header>
+  
+<ion-content>
+  <ion-list no-border>
+      <ion-list-header>
+          PESSOAL
+      </ion-list-header>
+    
+        <ion-item (click)="profile()">
+          <ion-icon name='ios-contact-outline' item-start></ion-icon>
+          Perfil
+        </ion-item>
+        <ion-item navPush="CartPage">
+          <ion-icon name='ios-heart-outline' item-start></ion-icon>
+          Minhas Doações
+        </ion-item>
+        <ion-item  (click)="profile()">
+          <ion-icon name='ios-people-outline' item-start></ion-icon>
+          Minhas Contribuições 
+        </ion-item>
+
+      <ion-list-header>
+        PÁGINAS
+      </ion-list-header>
+  
+        <ion-item (click)="profile()">
+          <ion-icon name='help-circle-outline' item-start></ion-icon>
+          Dúvidas Frequentes
+        </ion-item>
+        <ion-item (click)="profile()">
+          <ion-icon name='ios-list-outline' item-start></ion-icon>
+          Termos de Uso
+        </ion-item>
+        <ion-item  (click)="profile()">
+          <ion-icon name='ios-lock-outline' item-start></ion-icon>
+          Dicas de Segurança
+        </ion-item>
+
+      <ion-list-header>
+        SOCIAL
+      </ion-list-header>
+    
+        <ion-item (click)="profile()">
+          <ion-icon name='ios-star-outline' item-start></ion-icon>
+          Avalie Nós!
+        </ion-item>
+        <ion-item (click)="profile()">
+          <ion-icon name='logo-facebook' item-start></ion-icon>
+          Pagina Facebook
+        </ion-item>
+        <ion-item  (click)="profile()">
+          <ion-icon name='logo-twitter' item-start></ion-icon>
+          Página Twitter
+        </ion-item>
+        <ion-item  (click)="profile()">
+          <ion-icon name='logo-github' item-start></ion-icon>
+          Página GitHub
+        </ion-item>  
+      
+        <ion-list-header>
+            SAIR
+        </ion-list-header>
+        
+            <ion-item (click)="logout()">
+              <ion-icon name='ios-exit-outline' item-start></ion-icon>
+              Sair
+            </ion-item>
+  </ion-list>
+</ion-content>

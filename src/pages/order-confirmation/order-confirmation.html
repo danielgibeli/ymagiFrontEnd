@@ -1,0 +1,90 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title *ngIf="codpedido">Doação Registrada com Sucesso!</ion-title>
+      <ion-title *ngIf="!codpedido">Confira os Dados de Sua Doação</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    
+    <div *ngIf="!codpedido">
+      <ion-card>
+        <ion-card-header>
+          Confira as Capanhas ou Intituições
+        </ion-card-header>
+        
+        <ion-list>
+          <ion-item *ngFor="let item of cartItems">
+            <ion-thumbnail item-start>
+              <img [src]="item.anuncioInstituicao.imageUrlAnuncioInst || 'assets/imgs/prod.jpg'">
+            </ion-thumbnail>
+            <h2>{{item.anuncioInstituicao.nome}}</h2>
+            <p>{{item.anuncioInstituicao.preco | currency}}</p>
+            <p class="nolinebreak">{{item.quantidade}}</p>
+            <p item-end>{{item.anuncioInstituicao.preco * item.quantidade | currency}}</p>
+          </ion-item> 
+    
+          <ion-item>
+            <h2>Total</h2>
+            <h2 item-end>{{total() | currency}}</h2>
+          </ion-item>
+        </ion-list> 
+      </ion-card>
+    
+      <ion-card>
+          <ion-card-header>
+            Usuário
+          </ion-card-header>
+          <ion-item>
+            <h2>{{usuario?.nome}}</h2>
+            <p>{{usuario?.email}}</p>
+          </ion-item>
+      </ion-card>
+    
+      <ion-card>
+        <ion-card-header>
+          Seu Endereço
+        </ion-card-header>
+      
+        <ion-item>
+          <h2>{{endereco?.logradouro}}, {{endereco?.numero}}</h2>
+          <p>{{endereco?.complemento}} {{endereco?.bairro}} CEP {{endereco?.cep}}</p>
+          <p>{{endereco?.cidade.nome}}, {{endereco?.cidade.estado.nome}}</p>
+        </ion-item>
+      </ion-card>
+    
+      <ion-card>
+        <ion-card-header>
+          Pagamento
+        </ion-card-header>
+      
+        <ion-item *ngIf="donativo.pagamento['@type']=='pagamentoComCartao'">
+          <h3>Pagamento com cartão</h3>
+          <p>Parcelas: {{donativo.pagamento.numeroDeParcelas}}</p>
+        </ion-item>
+        <ion-item *ngIf="donativo.pagamento['@type']=='pagamentoComBoleto'">
+          <h3>Pagamento com boleto</h3>
+        </ion-item>
+      </ion-card>
+      <button ion-button block (click)="checkout()">Confirmar Doação</button>
+      <button ion-button block outline (click)="back()">Voltar</button>
+    </div>
+
+    <div *ngIf="codpedido">
+        <ion-card>
+            <ion-card-header>
+              Doação Registrada Com Sucesso!
+            </ion-card-header>
+            <ion-item>
+              <h2>Doação Número: {{codpedido}}</h2>
+              <p>Você irá receber um e-mail com a Confirmação!</p>
+            </ion-item>
+        </ion-card>
+    
+        <button ion-button block outline (click)="home()">Voltar</button>
+      </div>
+
+  </ion-content>

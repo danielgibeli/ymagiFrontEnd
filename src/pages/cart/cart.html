@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>    
+      <ion-title>Donativos</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        <ion-thumbnail item-start>
+          <img [src]="item.anuncioInstituicao.imageUrlAnuncioInst || 'assets/imgs/prod.jpg'">
+        </ion-thumbnail>
+        <h2>{{item.anuncioInstituicao.nome}}</h2>
+        <p>{{item.anuncioInstituicao.preco | currency}}</p>
+        <ion-icon class="nolinebreak" name="remove-circle" color="primary"  (click)="decreaseQuantity(item.anuncioInstituicao)"></ion-icon>
+        <p class="nolinebreak">{{item.quantidade}}</p>
+        <ion-icon name="add-circle" color="primary" (click)="increaseQuantity(item.anuncioInstituicao)"></ion-icon>
+        <ion-icon name="trash" item-end  color="danger" (click)="removeItem(item.anuncioInstituicao)"></ion-icon>
+      </ion-item>
+      <ion-item *ngIf="total() > 0">
+        <h1>Total de Doações</h1>
+        <h1 item-end>R$ {{total()}}</h1>
+      </ion-item>
+      <ion-item *ngIf="total() <= 0">
+        <h1>Você não possui Doações</h1>
+      </ion-item>
+    </ion-list> 
+    <button ion-button block (click)="goOn()">Continuar Navegando</button>
+    <button *ngIf="total() > 0" ion-button color="secondary" block (click)="checkout()">Finalizar Doação</button> 
+  </ion-content>
